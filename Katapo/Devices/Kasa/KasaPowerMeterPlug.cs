@@ -32,6 +32,5 @@ public abstract class KasaPowerMeterPlug : KasaDevice, IPowerMeterPlug {
     /// <returns></returns>
     /// <exception cref="NotImplementedException"></exception>
     public async Task Toggle() {
-        throw new NotImplementedException();
     }
 }
