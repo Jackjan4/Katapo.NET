@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace Roslan.Katapo.Crypto;
+namespace Roslan.Katapo.Kasa;
 
 internal static class KasaEncryption {
 
@@ -17,13 +17,9 @@ internal static class KasaEncryption {
     /// <param name="data"></param>
     /// <returns></returns>
     internal static byte[] Encrypt(string data) {
-        var encryptedMessage = Encrypt(Encoding.ASCII.GetBytes(data));
+        var encryptedMsg = Encrypt(Encoding.ASCII.GetBytes(data));
 
-        IEnumerable<byte> lengthBytes = BitConverter.GetBytes((uint)encryptedMessage.Length);
-        if (BitConverter.IsLittleEndian) // this value needs to be in big-endian
-            lengthBytes = lengthBytes.Reverse();
-
-        return lengthBytes.Concat(encryptedMessage).ToArray();
+        return encryptedMsg;
     }
 
 
@@ -52,9 +48,7 @@ internal static class KasaEncryption {
     /// <param name="data"></param>
     /// <returns></returns>
     internal static string DecryptStr(byte[] data) {
-
         var dec = Decrypt(data);
-
         return Encoding.ASCII.GetString(dec);
     }
 
@@ -65,7 +59,6 @@ internal static class KasaEncryption {
     /// <param name="data"></param>
     /// <returns></returns>
     internal static byte[] Decrypt(byte[] data) {
-
         var buf = (byte[])data.Clone();
         var key = InitializationVector; // TP-Link Constant
         for (var i = 0; i < data.Length; i++) {

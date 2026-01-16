@@ -5,4 +5,7 @@ using System.Text;
 namespace Roslan.Katapo.Interfaces;
 
 public interface IPowerMeter {
+
+
+
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Roslan.Katapo;
+namespace Roslan.Katapo.Kasa.Models;
 
-internal class KasaMessage {
+public class KasaSysInfo {
 }
