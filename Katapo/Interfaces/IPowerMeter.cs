@@ -6,6 +6,6 @@ namespace Roslan.Katapo.Interfaces;
 
 public interface IPowerMeter {
 
-
+    public Task<double> GetCurrentPowerAsync();
 
 }
